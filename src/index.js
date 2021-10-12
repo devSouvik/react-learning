@@ -1,4 +1,5 @@
 import React from "react";
+import { Children } from "react";
 import ReactDOM from "react-dom";
 
 import "./style.css";
@@ -30,26 +31,42 @@ function BookList() {
         img={firstBook.bookimg}
         author={firstBook.bookauthor}
         sold={firstBook.booksold}
-      />
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
+          facilis sed quisquam illo qui esse obcaecati hic, reiciendis suscipit
+          voluptate.
+        </p>
+      </Book>
       <Book
         price={secondBook.bookprice}
         title={secondBook.booktitle}
         img={secondBook.bookimg}
         author={secondBook.bookauthor}
         sold={secondBook.booksold}
-      />
+      >
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+          tempore reiciendis sapiente dignissimos nisi eligendi modi facere
+          consequatur iusto iure sed fugit, cum ipsa dolores molestias. Vel modi
+          a quos!
+        </p>
+        <input type="button" value="Buy" />
+      </Book>
     </div>
   );
 }
 
 function Book(props) {
+  const { price, title, img, author, sold, children } = props;
   return (
     <div className="book">
-      <img id="image-id" src={props.img} alt="Book image" />
-      <p>{props.title}</p>
-      <h5>by {props.author}</h5>
-      <p>{props.sold}</p>
-      <p id="priceId">{props.price}</p>
+      <img id="image-id" src={img} alt="Book image" />
+      <h4>{title}</h4>
+      {children}
+      <h5>by {author}</h5>
+      <p>{sold}</p>
+      <p id="priceId">{price}</p>
     </div>
   );
 }
